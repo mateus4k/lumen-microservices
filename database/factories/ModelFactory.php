@@ -1,9 +1,10 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
-use App\Author;
+use App\Models\Author;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Author::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'gender'  => $gender = $faker->randomElement(['male', 'female']),
+        'name'    => $faker->name($gender),
+        'country' => $faker->country,
     ];
 });
