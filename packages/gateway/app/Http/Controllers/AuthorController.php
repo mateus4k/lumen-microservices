@@ -34,4 +34,9 @@ class AuthorController extends Controller
     {
         return $this->successResponse($this->authorService->editAuthor($request->all(), $author));
     }
+
+    public function destroy($author)
+    {
+        return $this->successResponse($this->authorService->deleteAuthor($author));
+    }
 }

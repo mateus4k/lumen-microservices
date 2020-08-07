@@ -59,4 +59,15 @@ class AuthorService
     {
         return $this->performRequest('PUT', "/authors/${author}", $data);
     }
+
+    /**
+     * Remove a single author using the author service
+     * @param $author
+     * @return string
+     * @throws GuzzleException
+     */
+    public function deleteAuthor($author)
+    {
+        return $this->performRequest('DELETE', "/authors/${author}");
+    }
 }
