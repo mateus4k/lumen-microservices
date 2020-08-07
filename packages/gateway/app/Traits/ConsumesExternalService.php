@@ -9,18 +9,22 @@ trait ConsumesExternalService
 {
     /**
      * Send a request to any service
-     * @param $method
-     * @param $requestUrl
-     * @param $formParams
-     * @param $headers
+     * @param string $method
+     * @param string $requestUrl
+     * @param array $formParams
+     * @param array $headers
      * @return string
      * @throws GuzzleException
      */
-    public function performRequest($method, $requestUrl, $formParams = [], $headers = [])
+    public function performRequest(string $method, string $requestUrl, array $formParams = [], array $headers = [])
     {
         $client = new Client([
             'base_uri' => $this->baseUri,
         ]);
+
+        if (isset($this->secret)) {
+            $headers['Authorization'] = $this->secret;
+        }
 
         $response = $client->request($method, $requestUrl, [
             'form_params' => $formParams,
