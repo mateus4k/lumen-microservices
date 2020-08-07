@@ -27,7 +27,19 @@ class AuthorService
     }
 
     /**
+     * Create one author using the author service
+     * @param $data
+     * @return string
+     * @throws GuzzleException
+     */
+    public function createAuthor($data)
+    {
+        return $this->performRequest('POST', '/authors', $data);
+    }
+
+    /**
      * Obtain one single author from the author service
+     * @param $author
      * @return string
      * @throws GuzzleException
      */
@@ -37,14 +49,14 @@ class AuthorService
     }
 
     /**
-     * Create one author using the author service
+     * Update an instance of author using the author service
      * @param $data
+     * @param $author
      * @return string
      * @throws GuzzleException
      */
-    public function createAuthor($data)
+    public function editAuthor($data, $author)
     {
-        return $this->performRequest('POST', '/authors', $data);
-
+        return $this->performRequest('PUT', "/authors/${author}", $data);
     }
 }
