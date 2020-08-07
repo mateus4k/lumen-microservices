@@ -25,4 +25,16 @@ class AuthorService
     {
         return $this->performRequest('GET', '/authors');
     }
+
+    /**
+     * Create one author using the author service
+     * @param $data
+     * @return string
+     * @throws GuzzleException
+     */
+    public function createAuthor($data)
+    {
+        return $this->performRequest('POST', '/authors', $data);
+
+    }
 }
