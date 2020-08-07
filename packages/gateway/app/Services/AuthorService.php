@@ -27,6 +27,16 @@ class AuthorService
     }
 
     /**
+     * Obtain one single author from the author service
+     * @return string
+     * @throws GuzzleException
+     */
+    public function obtainAuthor($author)
+    {
+        return $this->performRequest('GET', "/authors/${author}");
+    }
+
+    /**
      * Create one author using the author service
      * @param $data
      * @return string
